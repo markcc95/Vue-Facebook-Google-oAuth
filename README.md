@@ -9,7 +9,7 @@ npm install
 
 ## Google Setup Client ID
 
-    import GoogleAuth from '@/config/google.js'
+    import GoogleAuth from '@/config/google_oAuth.js'
     const gauthOption = {
     clientId: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.apps.googleusercontent.com',
         scope: 'profile email',
