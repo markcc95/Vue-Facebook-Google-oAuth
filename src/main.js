@@ -6,13 +6,24 @@ import store from './store/store'
 import '@/assets/css/style.css'
 import './registerServiceWorker'
 
-import GoogleAuth from '@/config/google_oAuth.js'
-const gauthOption = {
-  clientId: '707231563844-e5cpkqrlt62gncmj6b84of5sml9lp8g9.apps.googleusercontent.com',
-  scope: 'profile email',
-  prompt: 'select_account'
-}
-Vue.use(GoogleAuth, gauthOption)
+var auth2 
+gapi.load('auth2', function(){
+  console.log('load')
+  auth2 = gapi.auth2.init({
+      client_id: '213998058564-d4arh06ckgknnj6m3m0hgkf7hq8k0sqh.apps.googleusercontent.com'
+  });
+});
+
+Vue.prototype.$auth2 = auth2
+Vue.prototype.$appName = 'My App'
+
+// import GoogleAuth from '@/config/google_oAuth.js'
+// const gauthOption = {
+//   clientId: '213998058564-d4arh06ckgknnj6m3m0hgkf7hq8k0sqh.apps.googleusercontent.com',
+//   scope: 'profile email',
+//   prompt: 'select_account'
+// }
+// Vue.use(GoogleAuth, gauthOption)
 Vue.config.productionTip = false
 
 new Vue({
