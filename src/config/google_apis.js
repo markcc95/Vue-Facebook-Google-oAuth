@@ -8,8 +8,6 @@ gapi.load('auth2', function(){
     });
 }); 
 
-export default auth2;
-
 var signinChanged = function (val) {
     console.log('Signin state changed to ', val);
 };
@@ -34,3 +32,5 @@ var userChanged = function (user) {
         // Do something here
     }
 };
+
+export default auth2;

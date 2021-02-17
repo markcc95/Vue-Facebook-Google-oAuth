@@ -6,16 +6,15 @@ import store from './store/store'
 import '@/assets/css/style.css'
 import './registerServiceWorker'
 
-var auth2 
-gapi.load('auth2', function(){
-  console.log('load')
-  auth2 = gapi.auth2.init({
-      client_id: '213998058564-d4arh06ckgknnj6m3m0hgkf7hq8k0sqh.apps.googleusercontent.com'
-  });
-});
+import google_auth from '@/config/google_service.js'
 
-Vue.prototype.$auth2 = auth2
-Vue.prototype.$appName = 'My App'
+// setTimeout(() => {
+//   console.log('auth2', auth2)
+//   console.log('google_auth', google_auth.getAuthInstance())
+// }, 1000);
+
+// Vue.prototype.$auth2 = auth2
+// Vue.prototype.$appName = 'My App'
 
 // import GoogleAuth from '@/config/google_oAuth.js'
 // const gauthOption = {

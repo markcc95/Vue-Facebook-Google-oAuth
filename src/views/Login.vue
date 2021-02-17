@@ -34,21 +34,16 @@ export default {
   components: {
     SocialLogin
   },
-  created() {
-    setTimeout(() => {
-      console.log('app name', this.$appName)
-      console.log('auth2', this.$auth2)
-      let isSignedIn = this.$auth2.getAuthInstance().isSignedIn.get()
-      console.log('isSignedIn', isSignedIn)
-      if(isSignedIn) this.$router.push('/home')
-    }, 100);
-  },
   mounted() {
-    console.log('mounted')
     var self = this
     this.$nextTick(() => {
       function onSuccess(googleUser) {
+        localStorage.setItem('is_user_signed_in', true)
+        localStorage.setItem('signed_in_user', JSON.stringify(googleUser.getBasicProfile()))
+        localStorage.setItem('signed_in_token', JSON.stringify(googleUser.getAuthResponse()))
+
         console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
+        console.log('Logged in as: ' + googleUser.getAuthResponse());
         self.$router.push('/home')
       }
       function onFailure(error) {

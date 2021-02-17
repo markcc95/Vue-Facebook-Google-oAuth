@@ -20,6 +20,7 @@
 
 <script>
 import HomeMenu from '@/components/Menu'
+import { google_auth } from '@/config/google_service.js'
 
 export default {
   name: 'home',
@@ -40,47 +41,49 @@ export default {
     }
   },
   mounted () {
-    var auth2;
-    var googleUser; // The current user
+    console.log('google_auth', google_auth)
+
+    // var auth2;
+    // var googleUser; // The current user
 
 
-    // is user sign in
-    console.log('is user signen in', gapi.auth2.getAuthInstance().isSignedIn.get())
+    // // is user sign in
+    // console.log('is user signen in', gapi.auth2.getAuthInstance().isSignedIn.get())
 
-    gapi.load('auth2', function(){
-        auth2 = gapi.auth2.init({
-            client_id: '213998058564-d4arh06ckgknnj6m3m0hgkf7hq8k0sqh.apps.googleusercontent.com'
-        });
-        auth2.attachClickHandler('signin-button', {}, onSuccess, onFailure);
+    // gapi.load('auth2', function(){
+    //     auth2 = gapi.auth2.init({
+    //         client_id: '213998058564-d4arh06ckgknnj6m3m0hgkf7hq8k0sqh.apps.googleusercontent.com'
+    //     });
+    //     auth2.attachClickHandler('signin-button', {}, onSuccess, onFailure);
 
-        auth2.isSignedIn.listen(signinChanged);
-        auth2.currentUser.listen(userChanged); // This is what you use to listen for user changes
-    });  
+    //     auth2.isSignedIn.listen(signinChanged);
+    //     auth2.currentUser.listen(userChanged); // This is what you use to listen for user changes
+    // });  
 
-    var signinChanged = function (val) {
-        console.log('Signin state changed to ', val);
-    };
+    // var signinChanged = function (val) {
+    //     console.log('Signin state changed to ', val);
+    // };
 
-    var onSuccess = function(user) {
-        console.log('Signed in as ' + user.getBasicProfile().getName());
-        // Redirect somewhere
-    };
+    // var onSuccess = function(user) {
+    //     console.log('Signed in as ' + user.getBasicProfile().getName());
+    //     // Redirect somewhere
+    // };
 
-    var onFailure = function(error) {
-        console.log(error);
-    };
+    // var onFailure = function(error) {
+    //     console.log(error);
+    // };
 
-    function signOut() {
-        auth2.signOut().then(function () {
-            console.log('User signed out.');
-        });
-    }        
+    // function signOut() {
+    //     auth2.signOut().then(function () {
+    //         console.log('User signed out.');
+    //     });
+    // }        
 
-    var userChanged = function (user) {
-        if(user.getId()){
-          // Do something here
-        }
-    };
+    // var userChanged = function (user) {
+    //     if(user.getId()){
+    //       // Do something here
+    //     }
+    // };
   },
 }
 </script>
